@@ -1,0 +1,33 @@
+.containerUserList {
+  width: 700px;
+  height: auto;
+  margin: 0 auto;
+
+  li {
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  li .textInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  li .avatar {
+    display: flex;
+    align-items: center;
+  }
+
+  li img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+}
+
+
