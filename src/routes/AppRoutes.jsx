@@ -10,19 +10,12 @@ function AppRoutes() {
   return (
     <div>
       <Routes>
-        <Route
-          path="/*"
-          element={
-            <Routes>
-              <Route path="/" element={<MainPage />}  index/>
-              <Route path="/login" element={<LoginView />} />
-              <Route path="/register" element={<RegisterView />} />
-              <Route path="/users" element={<UserView />} />
-              <Route path="/singleUser" element={<SingleUserView />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          }
-        />
+        <Route path="/" element={<MainPage />} index />
+        <Route path="/login" element={<LoginView />} />
+        <Route path="/register" element={<RegisterView />} />
+        <Route path="/users" element={<UserView />} />
+        <Route path="/singleUser" element={<SingleUserView />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

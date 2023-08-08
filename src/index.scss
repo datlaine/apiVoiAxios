@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+input:focus {
+  border: 2px solid rgb(201, 26, 198) !important;
+}
+
+span.message {
+  color: rgb(204, 18, 198);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+#containerLoading {
+  margin: 75px 0px 15px 25px;
+  display: flex;
+  gap: 35px; 
+  align-items: center; 
+
+  #loading {
+    width: 8vmax;
+    height: 8vmax;
+    border-right: 4px solid rgb(201, 26, 198);
+    border-radius: 100%;
+    animation: spinRight 800ms linear infinite;
+    div {
+      background-color: rgb(201, 26, 198);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      width: 6vmax;
+      height: 6vmax;
+      display: block;
+      position: absolute;
+      top: calc(50% - 3vmax);
+      left: calc(50% - 3vmax);
+      border-left: 3px solid rgb(201, 26, 198);
+      border-radius: 100%;
+      animation: spinLeft 800ms linear infinite;
+    }
+
+    &:after {
+      width: 4vmax;
+      height: 4vmax;
+      top: calc(50% - 2vmax);
+      left: calc(50% - 2vmax);
+      border: 0;
+      border-right: 2px solid rgb(201, 26, 198);
+      animation: none;
+    }
+  }
+
+  span {
+    color: rgb(201, 26, 198);
+    font-size: 25px;
+    font-weight: 700;
+  }
+}
+
+@keyframes spinLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes spinRight {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import "../styles/singleUser.scss";
 import { getUserWithId } from "../api/getUserWithId";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 function SingleUserView() {
   const [idUser, setIdUser] = useState();
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
 
   const { data, isSuccess, isError, isLoading } = useQuery({
     queryKey: ["id", , idUser],
@@ -29,12 +29,21 @@ function SingleUserView() {
           type="text"
           id="idUser"
           onChange={(e) => setIdUser(e.target.value)}
+          value={idUser}
         />
-        <button  className="buttonBack" type="submit">Tìm</button>
+        <button
+          className="buttonBack"
+          type="submit"
+          style={{ marginBottom: 10 }}
+        >
+          Tìm
+        </button>
       </form>
       {isSuccess && (
         <>
-          <h3>Thông tin Info - User</h3>
+          <h3 style={{ color: "rgb(204,20,198)", marginBottom: 10 }}>
+            Thông tin Info - User
+          </h3>
           <div className="textInfo">
             <span>ID:{data.data.data.id}</span>
             <span>Email: {data.data.data.email}</span>
@@ -47,14 +56,25 @@ function SingleUserView() {
           </div>
         </>
       )}
-        {
-          isLoading && <p style={{color: 'orange',fontWeight: 700}}>Đang load dữ liệu từ server...</p>
-        }
-      {isError && <p style={{color: 'red', fontWeight: 900}}>Không tìm thấy thông tin</p>}
-        <div className="positionButton">
-          <Button />
+      {idUser !== undefined && isLoading && (
+        <div>
+          <div id="containerLoading">
+            <div id="loading">
+              <div></div>
+            </div>
+            <span>Đang loading</span>
+          </div>
         </div>
+      )}
+      {idUser !== undefined && isError && (
+        <p style={{ color: "red", fontWeight: 900 }}>
+          Không tìm thấy thông tin
+        </p>
+      )}
+      <div className="positionButton">
+        <Button />
       </div>
+    </div>
   );
 }
 
